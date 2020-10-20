@@ -1,0 +1,5 @@
+defaultNamespace: loki
+helm:
+  releaseName: loki
+  repo: https://grafana.github.io/loki/charts
+  chart: loki

@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: prometheus-example-app
+  name: prometheus-example-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-example-app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prometheus-example-app
+    spec:
+      containers:
+      - name: prometheus-example-app
+        image: gmehta3/demo-app:powderblue
+        ports:
+        - name: web
+          containerPort: 8080
+        livenessProbe:
+          exec:
+            command:
+              - cat
+              - /health
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          failureThreshold: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-example-app
+  labels:
+    app.kubernetes.io/name: prometheus-example-app
+spec:
+  selector:
+    app.kubernetes.io/name: prometheus-example-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      name: web
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+    name: prometheus-example-app
+spec:
+    rules:
+    - host: hpa.demo
+      http:
+        paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            serviceName: prometheus-example-app
+            servicePort: 8080

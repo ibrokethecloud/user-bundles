@@ -1,0 +1,10 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-example-app
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-example-app
+  endpoints:
+  - port: web
