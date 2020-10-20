@@ -28,4 +28,4 @@ spec:
         labels:
             app.kubernetes.io/name: prometheus-example-app
     localOutputRefs:
-    - loki-output    
+      - loki-output    
