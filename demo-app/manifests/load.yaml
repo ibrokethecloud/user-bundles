@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl
+spec:
+  containers:
+    - name: curl
+      image: radial/busyboxplus:curl
+      command:
+        - sh
+        - -c
+        - while true; do curl http://prometheus-example-app:8080/ ;sleep 10; done
