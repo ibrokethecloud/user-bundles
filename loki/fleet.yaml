@@ -3,11 +3,6 @@ helm:
   releaseName: loki
   repo: https://kubernetes-charts.banzaicloud.com
   chart: loki
-  values:
-    config:
-      table_manager:
-        retention_deletes_enabled: true
-        retention_period: 48h
 diff:
   comparePatches:
   - apiVersion: policy/v1beta1
