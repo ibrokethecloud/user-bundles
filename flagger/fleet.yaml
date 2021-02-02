@@ -1,0 +1,10 @@
+namespace: istio-system
+helm:
+  releaseName: flagger
+  repo: https://flagger.app
+  chart: flagger
+  version: 1.6.2
+  values:
+    crd.create: true
+    meshProvider: istio
+    metricsServer: http://rancher-monitoring-prometheus.cattle-monitoring-system:9090
