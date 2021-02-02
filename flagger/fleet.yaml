@@ -8,3 +8,12 @@ helm:
     crd.create: true
     meshProvider: istio
     metricsServer: http://rancher-monitoring-prometheus.cattle-monitoring-system:9090
+diff:
+  comparePatches:
+  - apiVersion: apps/v1
+    kind: Deployment
+    name: flagger
+    operations:
+    - {"op": "remove", "path": "/spec/template/spec/containers/0/resources/limits/cpu"}
+    - {"op": "remove", "path": "/spec/template/spec/containers/0/volumeMounts"}
+    - {"op": "remove", "path": "/spec/template/spec/volumes"}
