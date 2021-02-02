@@ -1,4 +1,4 @@
-namespace: istio-system
+defaultNamespace: istio-system
 helm:
   releaseName: flagger
   repo: https://flagger.app
