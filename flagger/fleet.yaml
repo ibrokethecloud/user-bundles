@@ -13,6 +13,7 @@ diff:
   - apiVersion: apps/v1
     kind: Deployment
     name: flagger
+    namespace: istio-system
     operations:
     - {"op": "remove", "path": "/spec/template/spec/containers/0/resources/limits/cpu"}
     - {"op": "remove", "path": "/spec/template/spec/containers/0/volumeMounts"}

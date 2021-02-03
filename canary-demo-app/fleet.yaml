@@ -1,0 +1,8 @@
+namespace: canary-demo
+diff:
+  comparePatches:
+  - apiVersion: v1
+    kind: namespace
+    name: temp 
+    operations:
+    - { "op": "add", "path": "/metadata/labels/istio-injection", "value": "enabled"}
