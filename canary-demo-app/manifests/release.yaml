@@ -29,4 +29,4 @@ spec:
         timeout: 5s
         metadata:
           type: cmd
-          cmd: "hey -z 1m -q 10 -c 2 http://fleet-simple-app.canary-demo:8080"
+          cmd: "hey -z 1m -q 10 -c 2 http://fleet-simple-app-canary.canary-demo:8080"
