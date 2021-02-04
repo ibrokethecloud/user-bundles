@@ -13,3 +13,4 @@ diff:
     namespace: canary-demo
     operations:
     - {"op":"remove", "path":"/spec/selector"} 
+    - {"op":"remove", "path":"/spec/ports/0"}

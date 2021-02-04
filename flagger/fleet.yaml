@@ -8,6 +8,7 @@ helm:
     crd.create: true
     meshProvider: istio
     metricsServer: http://rancher-monitoring-prometheus.cattle-monitoring-system:9090
+    includeLabelPrefix: dummy
 diff:
   comparePatches:
   - apiVersion: apps/v1
