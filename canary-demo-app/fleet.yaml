@@ -1,11 +1,6 @@
 namespace: canary-demo
 diff:
   comparePatches:
-  - apiVersion: v1
-    kind: Namespace
-    name: canary-demo 
-    operations:
-    - {"op": "add", "path": "/metadata/labels/istio-injection", "value": "enabled"}
   - apiVersion: apps/v1
     kind: Deployment
     name: prometheus-example-app
@@ -18,15 +13,3 @@ diff:
     namespace: canary-demo
     operations:
     - {"op":"remove", "path":"/spec/selector"} 
-  - apiVersion: apps/v1
-    kind: Deployment
-    name: prometheus-example-app-primary
-    namespace: canary-demo
-    operations:
-    - {"op":"remove", "path":"/"}    
-  - apiVersion: apps/v1
-    kind: Deployment
-    name: prometheus-example-app-canary
-    namespace: canary-demo
-    operations:
-    - {"op":"remove", "path":"/"}       
