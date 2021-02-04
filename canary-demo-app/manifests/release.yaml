@@ -1,12 +1,12 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: prometheus-example-app
+  name: fleet-sample-app
 spec:
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: prometheus-example-app
+    name: fleet-sample-app
   service:
     port: 8080
   analysis:
@@ -23,3 +23,10 @@ spec:
         thresholdRange:
           max: 500
         interval: 1m
+  webhooks:
+    - name: load-test
+      url: http://flagger-loadtester.loadtester/
+      timeout: 5s
+      metadata:
+        type: cmd
+        cmd: "hey -z 1m -q 10 -c 2 http://fleet-sample-app.canary-demo:8080"
