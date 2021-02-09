@@ -1,0 +1,21 @@
+defaultNamespace: istio-system
+helm:
+  releaseName: flagger
+  repo: https://flagger.app
+  chart: flagger
+  version: 1.6.2
+  values:
+    crd.create: true
+    meshProvider: istio
+    metricsServer: http://rancher-monitoring-prometheus.cattle-monitoring-system:9090
+    includeLabelPrefix: dummy
+diff:
+  comparePatches:
+  - apiVersion: apps/v1
+    kind: Deployment
+    name: flagger
+    namespace: istio-system
+    operations:
+    - {"op": "remove", "path": "/spec/template/spec/containers/0/resources/limits/cpu"}
+    - {"op": "remove", "path": "/spec/template/spec/containers/0/volumeMounts"}
+    - {"op": "remove", "path": "/spec/template/spec/volumes"}

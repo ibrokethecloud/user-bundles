@@ -1,0 +1,7 @@
+defaultNamespace: loadtester
+helm:
+  releaseName: flagger-loadtester
+  repo: https://flagger.app
+  chart: loadtester
+  values:
+    cmd.timeout: 1h
