@@ -1,0 +1,6 @@
+defaultNamespace: kube-system
+helm:
+  repo: https://charts.jetstack.io
+  chart: cert-manager
+  releaseName: cert-manager
+  version: v1.1.0
