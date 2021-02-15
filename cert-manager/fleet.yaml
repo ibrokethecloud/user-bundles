@@ -1,0 +1,36 @@
+defaultNamespace: kube-system
+helm:
+  repo: https://charts.jetstack.io
+  chart: cert-manager
+  releaseName: cert-manager
+  version: v1.1.0
+  values:
+    installCRDs: true
+    prometheus:
+      enabled: true
+      servicemonitor: 
+        enabled: true
+diff:
+  comparePatches:
+  - apiVersion: admissionregistration.k8s.io/v1
+    kind: MutatingWebhookConfiguration
+    name: cert-manager-webhook
+    operations:
+    - {"op": "remove", "path":"/webhooks"}
+  - apiVersion: admissionregistration.k8s.io/v1
+    kind: ValidatingWebhookConfiguration
+    name: cert-manager-webhook
+    operations:
+    - {"op": "remove", "path":"/webhooks"}
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    name: cert-manager-webhook:dynamic-serving
+    namespace: kube-system
+    operations:
+    - {"op": "remove", "path": "/subjects/0"}
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    name: cert-manager:leaderelection
+    namespace: kube-system
+    operations:
+    - {"op": "remove", "path": "/subjects/0"}
