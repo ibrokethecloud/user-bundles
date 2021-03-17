@@ -11,6 +11,6 @@ diff:
     kind: Service
     name: fleet-simple-app
     namespace: canary-demo
-    operations:
-    - {"op":"remove", "path":"/spec/selector"} 
-    - {"op":"remove", "path":"/spec/ports/0"}
+    jsonPointers:
+    - "/spec/selector"
+    - "/spec/ports"
