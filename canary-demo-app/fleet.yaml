@@ -1,4 +1,4 @@
-namespace: canary-demo
+defaultNamespace: canary-demo
 diff:
   comparePatches:
   - apiVersion: apps/v1
