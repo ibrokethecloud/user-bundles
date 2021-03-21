@@ -2,6 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: fleet-simple-app
+  namespace: canary-demo
 spec:
   targetRef:
     apiVersion: apps/v1

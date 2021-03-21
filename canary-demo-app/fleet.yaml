@@ -1,4 +1,4 @@
-namespace: canary-demo
+defaultNamespace: kube-system
 diff:
   comparePatches:
   - apiVersion: apps/v1
