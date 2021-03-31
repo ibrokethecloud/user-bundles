@@ -35,19 +35,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: CLUSTER
-            value: "{{ (index .Values "global" "fleet" "clusterLabels" "management.cattle.io/cluster-display-name") }}"
+            value: "{{if hasKey .Values "global" }}{{ index .Values "global" "fleet" "clusterLabels" "management.cattle.io/cluster-display-name" }}{{ end }}"
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
