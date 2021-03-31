@@ -1,0 +1,12 @@
+namespace: default
+helm:
+  releaseName: labels
+diff:
+  comparePatches:
+  - apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    name: labels-fleetlabelsdemo
+    namespace: default
+    jsonPointers:
+    - "/spec"
+
