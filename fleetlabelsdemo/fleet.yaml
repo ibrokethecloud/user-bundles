@@ -1,6 +1,8 @@
 namespace: default
 helm:
   releaseName: labels
+  values:
+    clusterName: global.fleet.clusterLabels.management.cattle.io/cluster-display-name
 diff:
   comparePatches:
   - apiVersion: networking.k8s.io/v1beta1
