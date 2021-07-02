@@ -1,4 +1,6 @@
 namespace: default
+schedule: "30 13 * * *"
+scheduleWindow: "5m"
 helm:
   releaseName: labels
   values:
